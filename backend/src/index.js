@@ -8,6 +8,7 @@ const proofRoutes = require('./routes/proofs');
 const authRoutes = require('./routes/auth');
 const stellarRoutes = require('./routes/stellar');
 const marketplaceRoutes = require('./routes/marketplace');
+const searchRoutes = require('./routes/search');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -29,6 +30,7 @@ app.use('/api/proofs', proofRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/stellar', stellarRoutes);
 app.use('/api/marketplace', marketplaceRoutes);
+app.use('/api/search', searchRoutes);
 
 // Health check
 app.get('/health', (req, res) => {
