@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import { RoleService } from '../services/roleService';
 import { BillingService } from '../services/billingService';
 
+const VALID_ROLES = ['admin', 'editor', 'viewer'];
+
 export class EnterpriseController {
     static async getTeamMembers(req: Request, res: Response) {
         try {
@@ -17,6 +19,15 @@ export class EnterpriseController {
         try {
             const { enterpriseId } = req.params;
             const { user, role } = req.body;
+
+            if (!user || !role) {
+                return res.status(400).json({ error: 'User and role are required' });
+            }
+
+            if (!VALID_ROLES.includes(role)) {
+                return res.status(400).json({ error: `Invalid role. Must be one of: ${VALID_ROLES.join(', ')}` });
+            }
+
             const member = await RoleService.addMember(enterpriseId, user, role);
             res.status(201).json(member);
         } catch (error: any) {
@@ -28,6 +39,11 @@ export class EnterpriseController {
         try {
             const { memberId } = req.params;
             const { role } = req.body;
+
+            if (role && !VALID_ROLES.includes(role)) {
+                return res.status(400).json({ error: `Invalid role. Must be one of: ${VALID_ROLES.join(', ')}` });
+            }
+
             const member = await RoleService.updateRole(memberId, role);
             if (!member) return res.status(404).json({ error: 'Member not found' });
             res.json(member);
@@ -50,6 +66,15 @@ export class EnterpriseController {
     static async bulkOperation(req: Request, res: Response) {
         try {
             const { proofIds, action } = req.body;
+
+            if (!Array.isArray(proofIds) || proofIds.length === 0) {
+                return res.status(400).json({ error: 'proofIds must be a non-empty array' });
+            }
+
+            if (proofIds.length > 5000) {
+                return res.status(400).json({ error: 'Batch size exceeds limit of 5000 items' });
+            }
+
             // Mock processing logic for bulk operations
             const processedCount = proofIds.length;
             res.json({ success: true, message: `Successfully processed ${processedCount} items with action: ${action}`, processedCount });
