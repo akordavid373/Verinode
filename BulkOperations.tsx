@@ -18,6 +18,14 @@ const BulkOperations: React.FC = () => {
         }
     };
 
+    const toggleSelectAll = () => {
+        if (selectedItems.length === proofs.length) {
+            setSelectedItems([]);
+        } else {
+            setSelectedItems(proofs.map(p => p.id));
+        }
+    };
+
     const handleBulkAction = (action: string) => {
         alert(`Performing ${action} on ${selectedItems.length} items`);
         setSelectedItems([]);
@@ -45,6 +53,15 @@ const BulkOperations: React.FC = () => {
                 </div>
             </div>
             <ul className="divide-y divide-gray-200">
+                <div className="py-3 border-b border-gray-200 flex items-center px-4 bg-gray-50">
+                    <input
+                        type="checkbox"
+                        checked={selectedItems.length === proofs.length && proofs.length > 0}
+                        onChange={toggleSelectAll}
+                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded mr-4"
+                    />
+                    <span className="text-sm text-gray-500 font-medium">Select All ({proofs.length} items)</span>
+                </div>
                 {proofs.map((proof) => (
                     <li key={proof.id} className="py-4 flex items-center">
                         <input 

@@ -57,4 +57,34 @@ export class EnterpriseController {
             res.status(500).json({ error: error.message });
         }
     }
+
+    static async getAuditLogs(req: Request, res: Response) {
+        try {
+            // Mock audit logs response
+            const logs = [
+                { id: 1, action: 'User Added', actor: 'Alice Johnson', target: 'Bob Smith', timestamp: new Date().toISOString() },
+                { id: 2, action: 'Role Updated', actor: 'Alice Johnson', target: 'Bob Smith (Editor)', timestamp: new Date().toISOString() }
+            ];
+            res.json(logs);
+        } catch (error: any) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+
+    static async getAnalytics(req: Request, res: Response) {
+        try {
+            const { enterpriseId } = req.params;
+            // Mock analytics data
+            const analytics = {
+                totalProofs: 1250,
+                activeMembers: 8,
+                apiUsage: 15400,
+                usageLimit: 50000,
+                activityTrend: [65, 59, 80, 81, 56, 55, 40]
+            };
+            res.json(analytics);
+        } catch (error: any) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 }

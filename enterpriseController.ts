@@ -95,4 +95,21 @@ export class EnterpriseController {
             res.status(500).json({ error: error.message });
         }
     }
+
+    static async getAnalytics(req: Request, res: Response) {
+        try {
+            const { enterpriseId } = req.params;
+            // Mock analytics data
+            const analytics = {
+                totalProofs: 1250,
+                activeMembers: 8,
+                apiUsage: 15400,
+                usageLimit: 50000,
+                activityTrend: [65, 59, 80, 81, 56, 55, 40]
+            };
+            res.json(analytics);
+        } catch (error: any) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 }

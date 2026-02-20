@@ -9,6 +9,9 @@ interface User {
 
 const UserManagement: React.FC = () => {
     const [users, setUsers] = useState<User[]>([]);
+    const [isInviting, setIsInviting] = useState(false);
+    const [inviteEmail, setInviteEmail] = useState('');
+    const [inviteRole, setInviteRole] = useState('viewer');
 
     // Mock data loading
     useEffect(() => {
@@ -22,12 +25,69 @@ const UserManagement: React.FC = () => {
         setUsers(users.map(u => u.id === userId ? { ...u, role: newRole } : u));
     };
 
+    const handleInvite = (e: React.FormEvent) => {
+        e.preventDefault();
+        // Mock invite logic
+        const newUser: User = {
+            id: Math.random().toString(36).substr(2, 9),
+            name: inviteEmail.split('@')[0], // Mock name from email
+            email: inviteEmail,
+            role: inviteRole
+        };
+        setUsers([...users, newUser]);
+        setIsInviting(false);
+        setInviteEmail('');
+        setInviteRole('viewer');
+    };
+
     return (
         <div className="bg-white shadow rounded-lg p-6">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-xl font-semibold text-gray-800">Team Members</h2>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Invite Member</button>
+                <button 
+                    onClick={() => setIsInviting(!isInviting)}
+                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                >
+                    {isInviting ? 'Cancel' : 'Invite Member'}
+                </button>
             </div>
+
+            {isInviting && (
+                <form onSubmit={handleInvite} className="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input
+                                type="email"
+                                required
+                                value={inviteEmail}
+                                onChange={(e) => setInviteEmail(e.target.value)}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                placeholder="colleague@company.com"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Role</label>
+                            <select
+                                value={inviteRole}
+                                onChange={(e) => setInviteRole(e.target.value)}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            >
+                                <option value="admin">Admin</option>
+                                <option value="editor">Editor</option>
+                                <option value="viewer">Viewer</option>
+                            </select>
+                        </div>
+                        <button
+                            type="submit"
+                            className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
+                        >
+                            Send Invitation
+                        </button>
+                    </div>
+                </form>
+            )}
+
             <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
