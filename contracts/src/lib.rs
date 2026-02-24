@@ -2,6 +2,10 @@
 #[cfg(test)]
 mod test;
 mod privacyVerification;
+mod crossChainBridge;
+mod chainVerifier;
+mod atomicSwap;
+mod messagePassing;
 
 use soroban_sdk::{contract, contractimpl, contracttype, Address, Bytes, Env, String, Vec};
 
