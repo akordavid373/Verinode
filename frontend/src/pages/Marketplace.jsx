@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery, useMutation, useQueryClient } from 'react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 import TemplateBrowser from '../components/Marketplace/TemplateBrowser';
 import TemplateCreator from '../components/Marketplace/TemplateCreator';
