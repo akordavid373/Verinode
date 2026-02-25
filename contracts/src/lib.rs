@@ -6,6 +6,7 @@ mod crossChainBridge;
 mod chainVerifier;
 mod atomicSwap;
 mod messagePassing;
+mod grantTreasury;
 
 pub mod proof_verifier;
 
