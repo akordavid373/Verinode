@@ -4,8 +4,8 @@ Web3 infrastructure for issuing and verifying cryptographic proofs on Stellar.
 
 ## Prerequisites
 
-- **Node.js** >= 16.0.0 (LTS version recommended)
-- **npm** >= 8.0.0
+- **Node.js** >= 18.0.0 (LTS version recommended)
+- **npm** >= 9.0.0
 - **Rust** and **Cargo** (for smart contracts)
 - **Docker** and **Docker Compose** (optional, for containerized deployment)
 
@@ -89,7 +89,7 @@ docker-compose up -d
 This project uses modern, secure dependencies:
 - No deprecated packages (e.g., `request` package has been replaced with `axios`)
 - All dependencies are regularly updated for security patches
-- Node.js 16+ LTS required for latest security features
+- Node.js 18+ LTS required for latest security features
 - Security headers implemented via Helmet middleware
 - Rate limiting and input validation
 

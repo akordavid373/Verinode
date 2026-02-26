@@ -1,15 +1,15 @@
 {"name": "verinode-frontend", "version": "1.0.0", "description": "Verinode frontend for cryptographic proof verification", "private": true, "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.0",
-    "@stellar/stellar-sdk": "^12.0.0",
-    "axios": "^1.6.7",
-    "tailwindcss": "^3.4.1",
-    "lucide-react": "^0.363.0",
-    "@tanstack/react-query": "^5.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "@stellar/stellar-sdk": "^12.2.0",
+    "axios": "^1.7.9",
+    "tailwindcss": "^3.4.15",
+    "lucide-react": "^0.454.0",
+    "@tanstack/react-query": "^5.62.0",
     "react-hot-toast": "^2.4.1",
-    "framer-motion": "^11.0.0",
-    "recharts": "^2.12.0"
+    "framer-motion": "^11.11.11",
+    "recharts": "^2.13.3"
   }, "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -19,15 +19,15 @@
     "lint:fix": "eslint src/ --fix"
   }, "devDependencies": {
     "react-scripts": "5.0.1",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
-    "typescript": "^5.3.0",
-    "eslint": "^8.57.0",
-    "prettier": "^3.2.0"
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "typescript": "^5.7.2",
+    "eslint": "^9.15.0",
+    "prettier": "^3.3.3"
   },
   "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=8.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   }, "browserslist": {
     "production": [">0.2%", "not dead", "not op_mini all"],
     "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
