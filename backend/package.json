@@ -12,7 +12,7 @@
     "lint:fix": "eslint src/ --fix"
   },
   "dependencies": {
-    "@stellar/stellar-sdk": "^12.2.0",
+    "@stellar/stellar-sdk": "^13.0.0",
     "axios": "^1.7.9",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
@@ -48,8 +48,8 @@
     "supertest": "^7.0.0"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=9.0.0"
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
   },
   "keywords": [
     "stellar",
