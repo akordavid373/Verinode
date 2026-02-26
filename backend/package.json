@@ -12,8 +12,7 @@
     "lint:fix": "eslint src/ --fix"
   },
   "dependencies": {
-    "@stellar/stellar-sdk": "^12.2.0",
-    "axios": "^1.7.9",
+
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -62,5 +61,15 @@
     "decentralized-storage"
   ],
   "author": "Verinode Team",
-  "license": "MIT"
+  "license": "MIT",
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/jest-ts-transform.cjs"
+    },
+    "moduleNameMapper": {
+      "^ioredis$": "<rootDir>/src/__mocks__/ioredis.js",
+      "^express$": "<rootDir>/src/__mocks__/express.js"
+    }
+  }
 }
