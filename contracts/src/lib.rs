@@ -7,6 +7,12 @@ mod chainVerifier;
 mod atomicSwap;
 mod messagePassing;
 mod grantTreasury;
+pub mod analytics {
+    pub mod UsageTracker;
+    pub mod CostAnalyzer;
+    pub mod PerformanceMetrics;
+    pub mod PredictiveInsights;
+}
 
 pub mod proof_verifier;
 
