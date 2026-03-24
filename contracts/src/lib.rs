@@ -11,6 +11,7 @@ pub mod optimization;
 pub mod bridges;
 
 pub mod proof_verifier;
+pub mod optimization;
 
 use soroban_sdk::{contract, contractimpl, contracttype, Address, Bytes, Env, String, Vec};
 
