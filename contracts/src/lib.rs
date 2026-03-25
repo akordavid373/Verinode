@@ -8,6 +8,7 @@ mod atomicSwap;
 mod messagePassing;
 
 pub mod optimization;
+pub mod security;
 
 use soroban_sdk::{contract, contractimpl, contracttype, Address, Bytes, Env, String, Vec};
 
