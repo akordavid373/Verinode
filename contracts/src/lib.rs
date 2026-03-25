@@ -6,17 +6,7 @@ mod crossChainBridge;
 mod chainVerifier;
 mod atomicSwap;
 mod messagePassing;
-mod grantTreasury;
-pub mod analytics {
-    pub mod UsageTracker;
-    pub mod CostAnalyzer;
-    pub mod PerformanceMetrics;
-    pub mod PredictiveInsights;
-}
-pub mod optimization;
-pub mod bridges;
 
-pub mod proof_verifier;
 pub mod optimization;
 
 use soroban_sdk::{contract, contractimpl, contracttype, Address, Bytes, Env, String, Vec};
